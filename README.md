@@ -1,18 +1,22 @@
-## AI Project Template
+## Text dataset deduplication
 
 ### Requirements
-'pandas', 'simhash'
+'pandas', 'simhash', 'datasketch'
 
 ### Installation
-Note: Activate your environment (if necessary)
+Active environment (if necessary)
+```bash
+python3 -m venv venv
+source ./venv/bin/activate
+```
 
-cd <path_to_root_project> (folder containing setup.py)
+Install requirements
 ```bash
 pip install -r requirements.txt
 ```
 
 ### Instruction
-Set input data 
+Set input data
 ```python
 texts = pd.read_csv('data_duplicate.csv')['text']
 ```
@@ -22,12 +26,12 @@ output = pd.DataFrame({'text': output_texts})
 output.to_csv('new_data_simhash.csv')
 ```
 
-### Demo simhash
+Run simhash
 ```bash
 python simhash_dedup.py
 ```
 
-### Demo minhash
+Run minhash
 ```bash
 python minhash_dedup.py
 ```
