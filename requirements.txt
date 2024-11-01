@@ -1,0 +1,5 @@
+numpy==2.1.2
+pandas==2.2.3
+simhash==2.1.2
+flake8
+datasketch
