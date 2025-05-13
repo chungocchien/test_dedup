@@ -23,6 +23,6 @@ jobs:
             -e ic_code__base_url="${{ secrets.BASE_URL }}" \
             -e github__user_token="${{ secrets.MY_GITHUB_TOKEN }}" \
             codingassistant/github_pr_agent:github \
-            python ./pr_agent/cli.py --pr_url="${{ github.event.pull_request.html_url }}" describe
-            python ./pr_agent/cli.py --pr_url="${{ github.event.pull_request.html_url }}" review
+            python ./pr_agent/cli.py --pr_url="${{ github.event.pull_request.html_url }}" describe && \
+            python ./pr_agent/cli.py --pr_url="${{ github.event.pull_request.html_url }}" review && \
             python ./pr_agent/cli.py --pr_url="${{ github.event.pull_request.html_url }}" improve
