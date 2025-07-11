@@ -22,12 +22,13 @@ jobs:
       - name: Run PR Agent in Docker
         run: |
           docker run --rm \
+            --entrypoint /bin/bash \
             -v "$PWD":/github/workspace \
             -e config__git_provider="github" \
             -e ic_code__key="${{ secrets.API_KEY }}" \
             -e ic_code__base_url="${{ secrets.BASE_URL }}" \
             -e github__user_token="${{ secrets.MY_GITHUB_TOKEN }}" \
             codingassistant/pr_agent:latest \
-            /bin/bash -c "python -m pr_agent.cli --pr_url='${{ github.event.pull_request.html_url }}' describe && \
-                          python -m pr_agent.cli --pr_url='${{ github.event.pull_request.html_url }}' review && \
-                          python -m pr_agent.cli --pr_url='${{ github.event.pull_request.html_url }}' improve"
+            -c "python -m pr_agent.cli --pr_url='${{ github.event.pull_request.html_url }}' describe && \
+                python -m pr_agent.cli --pr_url='${{ github.event.pull_request.html_url }}' review && \
+                python -m pr_agent.cli --pr_url='${{ github.event.pull_request.html_url }}' improve"
