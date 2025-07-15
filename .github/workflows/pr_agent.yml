@@ -19,7 +19,6 @@ jobs:
         run: |
           docker run --rm \
             -v "$PWD":/github/workspace \
-	    -e config__git_provider="github" \
             -e ic_code__key="${{ secrets.API_KEY }}" \
             -e ic_code__base_url="${{ secrets.BASE_URL }}" \
             -e github__user_token="${{ secrets.MY_GITHUB_TOKEN }}" \
